@@ -1,4 +1,4 @@
-import { getAvailability } from './lsobDataFetcher.js';
+require('babel-register');
+require("babel-polyfill");
 
-getAvailability()
-  .then(console.log);
+require('./app');

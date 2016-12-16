@@ -7,21 +7,34 @@ function fillArrayWithNumbers(n) {
   return arr.map(function (x, i) { return i });
 }
 
-const opts = {};
+function get (arr) {
 
-const days = fillArrayWithNumbers(10)
-  .map(day => moment().add(day, 'days'));
+}
 
-const calls = days
-  .map(day => `http://londonschoolofbarbering.simplybook.me/sheduler/get-starttime-matrix/?date=${day.format('YYYY-MM-DD')}&event_id=68`)
-  .map(url => fetch(url, opts));
+export const getAvailability = async (eventId = 68, numDays = 20) => {
+  const opts = {};
 
-export const getAvailability = async () => {
-  return Promise.all(calls)
-    .then(values => values.map(v => v.json()))
-    .then(value => {
-      return Promise.all(value)
-        .then(v => _.zip(days, v))
-    })
-    .catch(console.error);
+  const days = fillArrayWithNumbers(numDays)
+    .map(day => moment().add(day, 'days'));
+
+  const calls = days
+    .map(day => `http://londonschoolofbarbering.simplybook.me/sheduler/get-starttime-matrix/?date=${day.format('YYYY-MM-DD')}&event_id=${eventId}`)
+    .map(url => fetch(url, opts));
+
+  const availabilities = await Promise.all(calls);
+  const json = await Promise.all(availabilities.map(a => a.json()));
+
+  const availabilityMap = _.chain(days)
+    .zip(json)
+    .flatMap(e => _.zipObject(['date', 'availability'], e))
+    .value();
+
+  const times = availabilityMap
+    .map(a => a.availability.map(time => `http://londonschoolofbarbering.simplybook.me/sheduler/load-units/?event_id=${eventId}&date=${a.date.format('YYYY-MM-DD')}&time=${time}&count=1`))
+
+  const idCalls = await Promise.all(times.map(async (urls) => await Promise.all(urls.map(url => fetch(url)))));
+
+  console.log('times', idCalls);
+
+  return availabilityMap;
 }
