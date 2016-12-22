@@ -7,10 +7,6 @@ function fillArrayWithNumbers(n) {
   return arr.map(function (x, i) { return i });
 }
 
-function get (arr) {
-
-}
-
 export const getAvailability = async (eventId = 68, numDays = 20) => {
   const opts = {};
 
@@ -38,7 +34,7 @@ export const getAvailability = async (eventId = 68, numDays = 20) => {
     return await Promise.all(resps.map(r => r.json()));
   }));
 
-  console.log('times', JSON.stringify(_.chain(availabilityMap).zip(idCalls).value()));
+  // console.log('times', JSON.stringify(_.chain(availabilityMap).zip(idCalls).value()));
 
   return availabilityMap;
 }

@@ -3,17 +3,18 @@ import express from 'express';
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
-app.get('/availability', async (req, res) => {
+// Express only serves static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
+app.get('/api/availability', async (req, res) => {
   const availability = await getAvailability();
-  res.json(availability.map(av => ({
-      date: av.date.format('MMMM Do YYYY'),
-      availability: av.availability
-    })));  
-
+  res.json(availability);
 });
 
 app.listen(PORT, function () {
-  console.log(`App listening on port ${PORT}!`)
+  console.log(`Server listening on port ${PORT}!`)
 });
