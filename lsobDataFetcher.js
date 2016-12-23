@@ -25,16 +25,5 @@ export const getAvailability = async (eventId = 68, numDays = 20) => {
     .flatMap(e => _.zipObject(['date', 'times'], e))
     .value();
 
-  const times = availabilityMap
-    .map(a => a.times.map(time => `http://londonschoolofbarbering.simplybook.me/sheduler/load-units/?event_id=${eventId}&date=${a.date.format('YYYY-MM-DD')}&time=${time}&count=1`))
-
-  const idCalls = await Promise.all(times.map(async (urls) => {
-    const resps = await Promise.all(urls.map(url => fetch(url)));
-
-    return await Promise.all(resps.map(r => r.json()));
-  }));
-
-  // console.log('times', JSON.stringify(_.chain(availabilityMap).zip(idCalls).value()));
-
   return availabilityMap;
 }

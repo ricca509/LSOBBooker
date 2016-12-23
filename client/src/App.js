@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 
 import AvailabilityList from './containers/AvailabilityPage/AvailabilityList';
+import LocationHeader from './containers/AvailabilityPage/LocationHeader';
+import Loading from './components/Loading';
 import { LOCATIONS } from './const';
 
 const fetchData = async () => {
@@ -32,7 +34,7 @@ class App extends Component {
   renderAvailability() {
     return this.state.availability.length ?
       <AvailabilityList {...this.state} /> :
-      <div>Loading...</div>;
+      <Loading />;
   }
 
   render() {
@@ -42,7 +44,7 @@ class App extends Component {
           <h2>London School of Barbering availability</h2>
         </div>
         <div className="row">
-          <h3>{ LOCATIONS[this.state.location] }</h3>
+          <LocationHeader location={LOCATIONS[this.state.location]} />
         </div>
         <div className="row">
           { this.renderAvailability() }

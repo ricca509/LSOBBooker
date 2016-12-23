@@ -1,0 +1,11 @@
+exports[`Loading component renders the default loadingText 1`] = `
+<div>
+  Loading...
+</div>
+`;
+
+exports[`Loading component renders the loadingText when passed as prop 1`] = `
+<div>
+  test
+</div>
+`;
