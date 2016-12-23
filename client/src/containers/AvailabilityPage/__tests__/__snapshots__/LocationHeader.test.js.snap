@@ -1,0 +1,5 @@
+exports[`LocationHeader renders the location intended for the search 1`] = `
+<h3>
+  far far away
+</h3>
+`;

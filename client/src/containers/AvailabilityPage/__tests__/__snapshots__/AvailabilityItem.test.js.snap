@@ -1,0 +1,12 @@
+exports[`AvailabilityItem renders a formatted date and a list of AvailabilityTimes components 1`] = `
+<dt>
+  January 4th 2017
+  <Component
+    times={
+      Array [
+        "12:00:00",
+        "20:00:00",
+      ]
+    } />
+</dt>
+`;
