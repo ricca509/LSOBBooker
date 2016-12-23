@@ -23,7 +23,8 @@
     "start:prod": "NODE_ENV=production npm run start:server",
     "start:server": "node index.js",
     "start:client": "cd client && npm run start",
-    "test:client": "cd client && npm test"
+    "test:client": "cd client && npm test",
+    "test": "npm run test:client"
   },
   "devDependencies": {
     "concurrently": "3.1.0",
