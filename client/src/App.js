@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h2>London School of Barbering availability</h2>
+          <h3>London School of Barbering availability</h3>
         </div>
         <div className="row">
           <LocationHeader
