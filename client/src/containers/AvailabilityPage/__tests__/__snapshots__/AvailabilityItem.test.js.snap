@@ -1,6 +1,6 @@
 exports[`AvailabilityItem renders a formatted date and a list of AvailabilityTimes components 1`] = `
 <dt>
-  January 4th 2017
+  Wednesday, January 4th 2017
   <Component
     times={
       Array [

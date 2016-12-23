@@ -5,7 +5,7 @@ import AvailabilityTimes from './AvailabilityTimes';
 
 export default ({ availability }) => (
   <dt>
-    {moment(availability.date).format('MMMM Do YYYY')}
+    {moment(availability.date).format('dddd, MMMM Do YYYY')}
     <AvailabilityTimes times={availability.times} />
   </dt>
 );
