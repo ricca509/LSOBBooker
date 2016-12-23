@@ -1,5 +1,24 @@
 exports[`LocationHeader renders the location intended for the search 1`] = `
-<h3>
-  far far away
-</h3>
+<div>
+  <div>
+    <strong>
+      Location 
+    </strong>
+    far far away
+  </div>
+  <div>
+    <strong>
+      From 
+    </strong>
+     
+    Sunday, December 25th 2016
+  </div>
+  <div>
+    <strong>
+      to 
+    </strong>
+     
+    Thursday, December 29th 2016
+  </div>
+</div>
 `;

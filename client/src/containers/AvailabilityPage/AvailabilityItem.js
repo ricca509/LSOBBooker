@@ -3,9 +3,13 @@ import moment from 'moment';
 
 import AvailabilityTimes from './AvailabilityTimes';
 
-export default ({ availability }) => (
-  <dt>
-    {moment(availability.date).format('dddd, MMMM Do YYYY')}
-    <AvailabilityTimes times={availability.times} />
-  </dt>
-);
+export default ({ availability }) => {
+  return availability.times.length ?
+    (
+      <tr>
+        <td>{moment(availability.date).format('dddd, MMMM Do YYYY')}</td>
+        <td><AvailabilityTimes times={availability.times} /></td>
+      </tr>
+    ) :
+    null;
+}

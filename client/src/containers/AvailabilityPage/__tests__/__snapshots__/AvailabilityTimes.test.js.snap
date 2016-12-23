@@ -1,25 +1,23 @@
 exports[`AvailabilityTimes renders a list of times with links 1`] = `
-<ul>
-  <li>
-    <a
-      href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
-      target="blank">
-      12:30
-    </a>
-  </li>
-  <li>
-    <a
-      href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
-      target="blank">
-      15:00
-    </a>
-  </li>
-  <li>
-    <a
-      href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
-      target="blank">
-      20:00
-    </a>
-  </li>
-</ul>
+<span
+  className="row">
+  <a
+    className="column"
+    href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
+    target="blank">
+    12:30
+  </a>
+  <a
+    className="column"
+    href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
+    target="blank">
+    15:00
+  </a>
+  <a
+    className="column"
+    href="http://londonschoolofbarbering.simplybook.me/sheduler/manage/category/4/event/68"
+    target="blank">
+    20:00
+  </a>
+</span>
 `;

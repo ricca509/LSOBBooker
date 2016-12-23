@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
+import { first, last } from 'lodash';
 
 import AvailabilityList from './containers/AvailabilityPage/AvailabilityList';
 import LocationHeader from './containers/AvailabilityPage/LocationHeader';
@@ -37,6 +38,17 @@ class App extends Component {
       <Loading />;
   }
 
+  getDates() {
+    if (this.state.availability.length) {
+      return {
+        start: first(this.state.availability)['date'],
+        end: last(this.state.availability)['date']
+      }
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <div className="container">
@@ -44,7 +56,10 @@ class App extends Component {
           <h2>London School of Barbering availability</h2>
         </div>
         <div className="row">
-          <LocationHeader location={LOCATIONS[this.state.location]} />
+          <LocationHeader
+            location={LOCATIONS[this.state.location]}
+            dates={this.getDates()}
+          />
         </div>
         <div className="row">
           { this.renderAvailability() }

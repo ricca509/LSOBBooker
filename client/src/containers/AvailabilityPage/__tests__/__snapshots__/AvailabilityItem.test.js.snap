@@ -1,12 +1,18 @@
+exports[`AvailabilityItem does not render when there is no availability 1`] = `null`;
+
 exports[`AvailabilityItem renders a formatted date and a list of AvailabilityTimes components 1`] = `
-<dt>
-  Wednesday, January 4th 2017
-  <Component
-    times={
-      Array [
-        "12:00:00",
-        "20:00:00",
-      ]
-    } />
-</dt>
+<tr>
+  <td>
+    Wednesday, January 4th 2017
+  </td>
+  <td>
+    <Component
+      times={
+        Array [
+          "12:00:00",
+          "20:00:00",
+        ]
+      } />
+  </td>
+</tr>
 `;
