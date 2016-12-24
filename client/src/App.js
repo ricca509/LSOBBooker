@@ -1,48 +1,29 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
 import { first, last } from 'lodash';
 
 import AvailabilityList from './containers/AvailabilityPage/AvailabilityList';
 import LocationHeader from './containers/AvailabilityPage/LocationHeader';
 import Loading from './components/Loading';
+import { observer } from 'mobx-react';
 import { LOCATIONS } from './const';
+import { fetchData } from './actions';
 
-const fetchData = async () => {
-  const res = await fetch('/api/availability');
-  const json = await res.json();
-
-  return json;
-};
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      location: 4,
-      eventId: 68,
-      availability: []
-    }
-  }
-
-  async componentDidMount() {
-    const json = await fetchData();
-    this.setState({
-      availability: json
-    });
+export class App extends Component {
+  componentDidMount() {
+    fetchData();
   }
 
   renderAvailability() {
-    return this.state.availability.length ?
-      <AvailabilityList {...this.state} /> :
+    return this.props.store.availability.length ?
+      <AvailabilityList {...this.props.store} /> :
       <Loading />;
   }
 
   getDates() {
-    if (this.state.availability.length) {
+    if (this.props.store.availability.length) {
       return {
-        start: first(this.state.availability)['date'],
-        end: last(this.state.availability)['date']
+        start: first(this.props.store.availability)['date'],
+        end: last(this.props.store.availability)['date']
       }
     }
 
@@ -57,7 +38,7 @@ class App extends Component {
         </div>
         <div className="row">
           <LocationHeader
-            location={LOCATIONS[this.state.location]}
+            location={LOCATIONS[this.props.store.location]}
             dates={this.getDates()}
           />
         </div>
@@ -69,4 +50,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default observer(App);
