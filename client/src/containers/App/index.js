@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { first, last } from 'lodash';
 
 import AvailabilityList from '../AvailabilityPage/AvailabilityList';
@@ -54,4 +54,4 @@ export class App extends Component {
   }
 }
 
-export default observer(App);
+export default inject('store')(observer(App));
