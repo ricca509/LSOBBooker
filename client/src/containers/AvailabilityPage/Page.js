@@ -1,40 +1,29 @@
 import React, { Component } from 'react';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { first, last } from 'lodash';
 
 import AvailabilityList from '../AvailabilityPage/AvailabilityList';
 import LocationHeader from '../AvailabilityPage/LocationHeader';
 import Loading from '../../components/Loading';
 import { LOCATIONS } from '../../const';
-import { fetchData } from '../../actions';
 
-export class App extends Component {
-  componentDidMount() {
-    fetchData();
-  }
-
+export class Page extends Component {
   renderAvailability() {
-    const { store } = this.props;
-
-    return store.hasAvailability ?
-      <AvailabilityList {...store} /> :
+    return this.props.hasAvailability ?
+      <AvailabilityList availability={this.props.availability} /> :
       <Loading />;
   }
 
   getDates() {
-    const { store } = this.props;
-
-    return store.hasAvailability ?
+    return this.props.hasAvailability ?
       {
-        start: first(store.availability)['date'],
-        end: last(store.availability)['date']
+        start: first(this.props.availability)['date'],
+        end: last(this.props.availability)['date']
       } :
       null;
   }
 
   render() {
-    const { store } = this.props;
-
     return (
       <div className="container">
         <div className="row">
@@ -42,7 +31,7 @@ export class App extends Component {
         </div>
         <div className="row">
           <LocationHeader
-            location={ LOCATIONS[store.location] }
+            location={ LOCATIONS[this.props.location] }
             dates={ this.getDates() }
           />
         </div>
@@ -54,4 +43,4 @@ export class App extends Component {
   }
 }
 
-export default inject('store')(observer(App));
+export default (observer(Page));
