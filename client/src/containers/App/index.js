@@ -16,7 +16,7 @@ export class App extends Component {
   renderAvailability() {
     const { store } = this.props;
 
-    return (store.hasAvailability) ?
+    return store.hasAvailability ?
       <AvailabilityList {...store} /> :
       <Loading />;
   }
