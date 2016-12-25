@@ -1,0 +1,63 @@
+exports[`App container when there is availability renders the data 1`] = `
+<div
+  className="container">
+  <div
+    className="row">
+    <h3>
+      London School of Barbering availability
+    </h3>
+  </div>
+  <div
+    className="row">
+    <LocationHeader
+      dates={
+        Object {
+          "end": "date",
+          "start": "date",
+        }
+      }
+      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX" />
+  </div>
+  <div
+    className="row">
+    <Component
+      availability={
+        Array [
+          Object {
+            "date": "date",
+            "times": Array [
+              1,
+              2,
+            ],
+          },
+        ]
+      }
+      eventId={68}
+      fetching={false}
+      hasAvailability={true}
+      location={4} />
+  </div>
+</div>
+`;
+
+exports[`App container when there is no availability renders the loading spinner 1`] = `
+<div
+  className="container">
+  <div
+    className="row">
+    <h3>
+      London School of Barbering availability
+    </h3>
+  </div>
+  <div
+    className="row">
+    <LocationHeader
+      dates={null}
+      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX" />
+  </div>
+  <div
+    className="row">
+    <Component />
+  </div>
+</div>
+`;
