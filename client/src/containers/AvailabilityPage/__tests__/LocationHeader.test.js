@@ -17,4 +17,13 @@ describe('LocationHeader', () => {
 
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
+
+  it('renders without dates if no date is passed', () => {
+    const wrapper = shallow(<LocationHeader
+      location='far far away'
+      dates={null}
+    />);
+
+    expect(toJSON(wrapper)).toMatchSnapshot();
+  });
 });

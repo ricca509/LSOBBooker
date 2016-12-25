@@ -10,15 +10,36 @@ exports[`LocationHeader renders the location intended for the search 1`] = `
     <strong>
       From 
     </strong>
-     
     Sunday, December 25th 2016
   </div>
   <div>
     <strong>
       to 
     </strong>
-     
     Thursday, December 29th 2016
+  </div>
+</div>
+`;
+
+exports[`LocationHeader renders without dates if no date is passed 1`] = `
+<div>
+  <div>
+    <strong>
+      Location 
+    </strong>
+    far far away
+  </div>
+  <div>
+    <strong>
+      From 
+    </strong>
+    -
+  </div>
+  <div>
+    <strong>
+      to 
+    </strong>
+    -
   </div>
 </div>
 `;
