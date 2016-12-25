@@ -1,7 +1,8 @@
+import { action } from 'mobx';
 import fetch from 'isomorphic-fetch';
 import store from './store';
 
-export const fetchData = async () => {
+export const fetchData = action('fetchData', async () => {
   store.fetching = true;
 
   try {
@@ -14,4 +15,4 @@ export const fetchData = async () => {
   } finally {
     store.fetching = false;
   }
-};
+});
