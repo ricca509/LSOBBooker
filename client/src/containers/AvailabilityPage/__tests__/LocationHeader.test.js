@@ -13,6 +13,7 @@ describe('LocationHeader', () => {
         start: moment('12-25-2016', 'MM-DD-YYYY'),
         end: moment('12-29-2016', 'MM-DD-YYYY')
       }}
+      service='haircut'
     />);
 
     expect(toJSON(wrapper)).toMatchSnapshot();
@@ -21,6 +22,7 @@ describe('LocationHeader', () => {
   it('renders without dates if no date is passed', () => {
     const wrapper = shallow(<LocationHeader
       location='far far away'
+      service='haircut'
       dates={null}
     />);
 

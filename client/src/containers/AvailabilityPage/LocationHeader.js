@@ -15,10 +15,11 @@ export default class LocationHeader extends Component {
   }
 
   render() {
-    const { location, dates } = this.props;
+    const { location, service, dates } = this.props;
     return (
       <div>
         <div><strong>Location </strong>{ location }</div>
+        <div><strong>Service </strong>{ service }</div>
         { this.getStartDate(dates) }
         { this.getEndDate(dates) }
       </div>

@@ -12,7 +12,8 @@ describe('Page', () => {
           times: [1, 2]
         }]}
         hasAvailability={true}
-        location={4}
+        locationId={4}
+        eventId={68}
       />);
 
       expect(toJSON(wrapper)).toMatchSnapshot();
@@ -24,7 +25,8 @@ describe('Page', () => {
       const wrapper = shallow(<Page
         availability={[]}
         hasAvailability={false}
-        location={4}
+        locationId={4}
+        eventId={68}
       />);
 
       expect(toJSON(wrapper)).toMatchSnapshot();

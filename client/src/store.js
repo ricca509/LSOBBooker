@@ -4,8 +4,8 @@ export class Store {
   constructor() {
     extendObservable(this, {
       availability: [],
-      location: 4,
-      eventId: 68,
+      selectedLocationId: 4,
+      selectedEventId: 68,
       fetching: false,
       hasAvailability: computed(() => this.availability.length && !this.fetching)
     });

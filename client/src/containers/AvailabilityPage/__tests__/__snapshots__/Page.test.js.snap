@@ -16,7 +16,8 @@ exports[`Page when there is availability renders the data 1`] = `
           "start": "date",
         }
       }
-      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX" />
+      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX"
+      service="1 Fade Cut - 1/4cm on sides" />
   </div>
   <div
     className="row">
@@ -49,7 +50,8 @@ exports[`Page when there is no availability renders the loading spinner 1`] = `
     className="row">
     <LocationHeader
       dates={null}
-      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX" />
+      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX"
+      service="1 Fade Cut - 1/4cm on sides" />
   </div>
   <div
     className="row">

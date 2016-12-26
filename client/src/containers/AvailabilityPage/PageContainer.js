@@ -15,7 +15,8 @@ export class PageContainer extends Component {
       <Page
         availability={store.availability}
         hasAvailability={store.hasAvailability}
-        location={store.location}
+        locationId={store.selectedLocationId}
+        eventId={store.selectedEventId}
       />
     );
   }

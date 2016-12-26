@@ -11,6 +11,7 @@ exports[`PageContainer renders the Page with the right data 1`] = `
       },
     ]
   }
+  eventId={68}
   hasAvailability={true}
-  location={4} />
+  locationId={4} />
 `;

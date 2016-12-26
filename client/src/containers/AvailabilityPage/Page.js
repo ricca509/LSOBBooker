@@ -5,7 +5,7 @@ import { first, last } from 'lodash';
 import AvailabilityList from '../AvailabilityPage/AvailabilityList';
 import LocationHeader from '../AvailabilityPage/LocationHeader';
 import Loading from '../../components/Loading';
-import { LOCATIONS } from '../../const';
+import { LOCATIONS, SERVICES } from '../../const';
 
 export class Page extends Component {
   renderAvailability() {
@@ -31,7 +31,8 @@ export class Page extends Component {
         </div>
         <div className="row">
           <LocationHeader
-            location={ LOCATIONS[this.props.location] }
+            location={ LOCATIONS[this.props.locationId] }
+            service={ SERVICES[this.props.eventId] }
             dates={ this.getDates() }
           />
         </div>

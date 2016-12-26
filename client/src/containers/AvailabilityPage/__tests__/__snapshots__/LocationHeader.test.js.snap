@@ -8,6 +8,12 @@ exports[`LocationHeader renders the location intended for the search 1`] = `
   </div>
   <div>
     <strong>
+      Service 
+    </strong>
+    haircut
+  </div>
+  <div>
+    <strong>
       From 
     </strong>
     Sunday, December 25th 2016
@@ -28,6 +34,12 @@ exports[`LocationHeader renders without dates if no date is passed 1`] = `
       Location 
     </strong>
     far far away
+  </div>
+  <div>
+    <strong>
+      Service 
+    </strong>
+    haircut
   </div>
   <div>
     <strong>

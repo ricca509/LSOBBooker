@@ -11,7 +11,8 @@ describe('PageContainer', () => {
         times: [1, 2]
       }],
       hasAvailability: true,
-      location: 4
+      selectedLocationId: 4,
+      selectedEventId: 68
     }} />);
 
     expect(toJSON(wrapper)).toMatchSnapshot();
