@@ -43,4 +43,6 @@ export class Page extends Component {
   }
 }
 
+Page.displayName = 'Page';
+
 export default (observer(Page));

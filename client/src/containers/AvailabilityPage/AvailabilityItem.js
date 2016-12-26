@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import AvailabilityTimes from './AvailabilityTimes';
 
-export default ({ availability }) => {
+const AvailabilityItem = ({ availability }) => {
   return availability.times.length ?
     (
       <tr>
@@ -13,3 +13,7 @@ export default ({ availability }) => {
     ) :
     null;
 }
+
+AvailabilityItem.displayName = 'AvailabilityItem';
+
+export default AvailabilityItem;

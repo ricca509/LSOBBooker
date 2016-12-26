@@ -25,3 +25,5 @@ export default class LocationHeader extends Component {
     );
   }
 }
+
+LocationHeader.displayName = 'LocationHeader';

@@ -1,7 +1,7 @@
 import React from 'react';
 import AvailabilityItem from './AvailabilityItem';
 
-export default ({ availability }) => (
+const AvailabilityList = ({ availability }) => (
   <table>
     <thead>
       <tr>
@@ -17,3 +17,7 @@ export default ({ availability }) => (
     </tbody>
   </table>
 );
+
+AvailabilityList.displayName = 'AvailabilityList';
+
+export default AvailabilityList;

@@ -20,7 +20,7 @@ exports[`Page when there is availability renders the data 1`] = `
   </div>
   <div
     className="row">
-    <Component
+    <AvailabilityList
       availability={
         Array [
           Object {
@@ -53,7 +53,7 @@ exports[`Page when there is no availability renders the loading spinner 1`] = `
   </div>
   <div
     className="row">
-    <Component />
+    <Loading />
   </div>
 </div>
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-export default ({ times }) => (
+const AvailabilityTimes = ({ times }) => (
   <span className="row">
     { times.map(time => (
       <a key={time}
@@ -13,3 +13,7 @@ export default ({ times }) => (
     )) }
   </span>
 );
+
+AvailabilityTimes.displayName = 'AvailabilityTimes';
+
+export default AvailabilityTimes;

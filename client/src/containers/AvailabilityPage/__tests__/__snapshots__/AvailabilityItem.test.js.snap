@@ -6,7 +6,7 @@ exports[`AvailabilityItem renders a formatted date and a list of AvailabilityTim
     Wednesday, January 4th 2017
   </td>
   <td>
-    <Component
+    <AvailabilityTimes
       times={
         Array [
           "12:00:00",

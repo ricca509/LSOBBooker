@@ -11,14 +11,14 @@ exports[`AvailabilityList renders a list of AvailabilityItem 1`] = `
     </tr>
   </thead>
   <tbody>
-    <Component
+    <AvailabilityItem
       availability={
         Object {
           "date": "2017-01-03T13:09:55.189",
           "times": Array [],
         }
       } />
-    <Component
+    <AvailabilityItem
       availability={
         Object {
           "date": "2017-01-04T13:09:55.189",
