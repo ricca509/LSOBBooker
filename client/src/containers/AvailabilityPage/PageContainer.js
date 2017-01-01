@@ -5,7 +5,11 @@ import Page from './Page';
 
 export class PageContainer extends Component {
   componentDidMount() {
-    fetchData();
+    const { store } = this.props;
+
+    if (store.isReadyToFetch) {
+      fetchData();
+    }
   }
 
   render() {
@@ -14,9 +18,12 @@ export class PageContainer extends Component {
     return (
       <Page
         availability={store.availability}
+        fetching={store.fetching}
+        fetched={store.fetched}
+        fetchError={store.fetchError}
         hasAvailability={store.hasAvailability}
         locationId={store.selectedLocationId}
-        eventId={store.selectedEventId}
+        serviceId={store.selectedEventId}
       />
     );
   }

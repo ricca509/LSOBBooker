@@ -6,28 +6,45 @@ import { Page } from '../Page';
 describe('Page', () => {
   describe('when there is availability', () => {
     it('renders the data', () => {
-      const wrapper = shallow(<Page
-        availability={[{
+      const props = {
+        hasAvailability: true,
+        availability: [{
           date: 'date',
           times: [1, 2]
-        }]}
-        hasAvailability={true}
-        locationId={4}
-        eventId={68}
-      />);
+        }],
+        fetched: true,
+        locationId: 4,
+        serviceId: 68,
+      };
+
+      const wrapper = shallow(<Page {...props} />);
 
       expect(toJSON(wrapper)).toMatchSnapshot();
     });
   });
 
-  describe('when there is no availability', () => {
+  describe('when is fetching', () => {
     it('renders the loading spinner', () => {
-      const wrapper = shallow(<Page
-        availability={[]}
-        hasAvailability={false}
-        locationId={4}
-        eventId={68}
-      />);
+      const props = {
+        availability: [],
+        fetching: true,
+        locationId: 4,
+        serviceId: 68,
+      };
+
+      const wrapper = shallow(<Page {...props} />);
+
+      expect(toJSON(wrapper)).toMatchSnapshot();
+    });
+  });
+
+  describe('when there is a fetch error', () => {
+    it('renders the error', () => {
+      const props = {
+        fetchError: true
+      };
+
+      const wrapper = shallow(<Page {...props} />);
 
       expect(toJSON(wrapper)).toMatchSnapshot();
     });

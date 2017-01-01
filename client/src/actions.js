@@ -1,8 +1,8 @@
-import { runInAction } from 'mobx';
+import { runInAction, action } from 'mobx';
 import fetch from 'isomorphic-fetch';
 import store from './store';
 
-export const fetchData = async () => {
+export const fetchData = action(async () => {
   store.fetching = true;
 
   try {
@@ -12,11 +12,17 @@ export const fetchData = async () => {
     runInAction('availability fetch success', () => {
       store.availability = json;
       store.fetching = false;
+      store.fetched = true;
     });
   } catch (e) {
     runInAction('availability fetch error', () => {
       console.log(e);
+      store.fetchError = e;
       store.fetching = false;
-    })    
+    })
   }
-};
+});
+
+export const setLocation = action(id => store.selectedLocationId = id);
+
+export const setService = action(id => store.selectedEventId = id);
