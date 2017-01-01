@@ -1,7 +1,8 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import AvailabilityItem from './AvailabilityItem';
 
-const AvailabilityList = ({ availability }) => (
+export const AvailabilityList = ({ availability }) => (
   <table>
     <thead>
       <tr>
@@ -20,4 +21,4 @@ const AvailabilityList = ({ availability }) => (
 
 AvailabilityList.displayName = 'AvailabilityList';
 
-export default AvailabilityList;
+export default observer(AvailabilityList);

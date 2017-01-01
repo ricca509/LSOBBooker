@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment';
+import { observer } from 'mobx-react';
 
-const AvailabilityTimes = ({ times }) => (
+export const AvailabilityTimes = ({ times }) => (
   <span className="row">
     { times.map(time => (
       <a key={time}
@@ -16,4 +17,4 @@ const AvailabilityTimes = ({ times }) => (
 
 AvailabilityTimes.displayName = 'AvailabilityTimes';
 
-export default AvailabilityTimes;
+export default observer(AvailabilityTimes);
