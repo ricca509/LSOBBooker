@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 import moment from 'moment';
 
-export default class LocationHeader extends Component {
+export class LocationHeader extends Component {
   getStartDate(dates) {
     return dates ?
     (<div><strong>From </strong>{ moment(dates.start).format('dddd, MMMM Do YYYY') }</div>) :
@@ -15,16 +16,59 @@ export default class LocationHeader extends Component {
   }
 
   render() {
-    const { location, service, dates } = this.props;
-    return (
-      <div>
-        <div><strong>Location </strong>{ location }</div>
-        <div><strong>Service </strong>{ service }</div>
-        { this.getStartDate(dates) }
-        { this.getEndDate(dates) }
-      </div>
-    );
+    const {
+      locationId,
+      serviceId,
+      dates,
+      onSelectedLocationChange,
+      onSelectedServiceChange
+    } = this.props;
+    const { store } = this.props;
+
+    if (!locationId) {
+      const locations = Object.keys(store.locationList)
+        .map(loc => (
+          <option value={loc} key={loc}>{store.locationList[loc]}</option>
+        ));
+
+      return (
+        <select name="select" onChange={onSelectedLocationChange}>
+          <option value="">Select location</option>
+          { locations }
+        </select>
+      );
+    }
+
+    if (locationId && !serviceId) {
+      const services = Object.keys(store.serviceList[locationId])
+        .map(svc => (
+          <option value={svc} key={svc}>{store.serviceList[locationId][svc]}</option>
+        ));
+
+      return (
+        <div>
+          <div><strong>Location </strong>{ store.locationList[locationId] }</div>
+          <select name="select" onChange={onSelectedServiceChange}>
+            <option value="">Select service</option>
+            { services }
+          </select>
+        </div>
+      )
+    }
+
+    if (locationId && serviceId) {
+      return (
+        <div>
+          <div><strong>Location </strong>{ store.locationList[locationId] }</div>
+          <div><strong>Service </strong>{ store.serviceList[locationId][serviceId] }</div>
+          { this.getStartDate(dates) }
+          { this.getEndDate(dates) }
+        </div>
+      );
+    }
   }
 }
 
 LocationHeader.displayName = 'LocationHeader';
+
+export default inject('store')(observer(LocationHeader));

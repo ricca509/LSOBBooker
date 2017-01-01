@@ -1,16 +1,16 @@
-exports[`LocationHeader renders the location intended for the search 1`] = `
+exports[`LocationHeader when location and service are selected renders the selected location and service 1`] = `
 <div>
   <div>
     <strong>
       Location 
     </strong>
-    far far away
+    location1
   </div>
   <div>
     <strong>
       Service 
     </strong>
-    haircut
+    service1
   </div>
   <div>
     <strong>
@@ -27,19 +27,19 @@ exports[`LocationHeader renders the location intended for the search 1`] = `
 </div>
 `;
 
-exports[`LocationHeader renders without dates if no date is passed 1`] = `
+exports[`LocationHeader when location and service are selected renders without dates if no date is passed 1`] = `
 <div>
   <div>
     <strong>
       Location 
     </strong>
-    far far away
+    location1
   </div>
   <div>
     <strong>
       Service 
     </strong>
-    haircut
+    service1
   </div>
   <div>
     <strong>
@@ -54,4 +54,48 @@ exports[`LocationHeader renders without dates if no date is passed 1`] = `
     -
   </div>
 </div>
+`;
+
+exports[`LocationHeader when location is selected and service is not renders selected location and service selection 1`] = `
+<div>
+  <div>
+    <strong>
+      Location 
+    </strong>
+    location1
+  </div>
+  <select
+    name="select">
+    <option
+      value="">
+      Select service
+    </option>
+    <option
+      value="service1">
+      service1
+    </option>
+    <option
+      value="service2">
+      service2
+    </option>
+  </select>
+</div>
+`;
+
+exports[`LocationHeader when no location or service is selected renders location selection 1`] = `
+<select
+  name="select">
+  <option
+    value="">
+    Select location
+  </option>
+  <option
+    value="location1">
+    location1
+  </option>
+  <option
+    value="location2">
+    location2
+  </option>
+</select>
 `;
