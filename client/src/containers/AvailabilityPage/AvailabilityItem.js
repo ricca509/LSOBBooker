@@ -1,9 +1,10 @@
 import React from 'react';
 import moment from 'moment';
+import { observer } from 'mobx-react';
 
 import AvailabilityTimes from './AvailabilityTimes';
 
-const AvailabilityItem = ({ availability }) => {
+export const AvailabilityItem = ({ availability }) => {
   return availability.times.length ?
     (
       <tr>
@@ -16,4 +17,4 @@ const AvailabilityItem = ({ availability }) => {
 
 AvailabilityItem.displayName = 'AvailabilityItem';
 
-export default AvailabilityItem;
+export default observer(AvailabilityItem);

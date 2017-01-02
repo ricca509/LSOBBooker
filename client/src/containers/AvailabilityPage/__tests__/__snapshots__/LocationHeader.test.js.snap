@@ -1,57 +1,121 @@
-exports[`LocationHeader renders the location intended for the search 1`] = `
+exports[`LocationHeader when location and service are selected renders the selected location and service 1`] = `
+<main>
+  <div>
+    <div>
+      <strong>
+        Location 
+      </strong>
+      location1
+    </div>
+    <div>
+      <strong>
+        Service 
+      </strong>
+      service1
+    </div>
+    <div>
+      <a
+        className="button button-small button-clear">
+        Change location/service
+      </a>
+    </div>
+  </div>
+  <div>
+    <div>
+      <strong>
+        From 
+      </strong>
+      Sunday, December 25th 2016
+    </div>
+    <div>
+      <strong>
+        to 
+      </strong>
+      Thursday, December 29th 2016
+    </div>
+  </div>
+</main>
+`;
+
+exports[`LocationHeader when location and service are selected renders without dates if no date is passed 1`] = `
+<main>
+  <div>
+    <div>
+      <strong>
+        Location 
+      </strong>
+      location1
+    </div>
+    <div>
+      <strong>
+        Service 
+      </strong>
+      service1
+    </div>
+    <div>
+      <a
+        className="button button-small button-clear">
+        Change location/service
+      </a>
+    </div>
+  </div>
+  <div>
+    <div>
+      <strong>
+        From 
+      </strong>
+      -
+    </div>
+    <div>
+      <strong>
+        to 
+      </strong>
+      -
+    </div>
+  </div>
+</main>
+`;
+
+exports[`LocationHeader when location is selected and service is not renders selected location and service selection 1`] = `
 <div>
   <div>
     <strong>
       Location 
     </strong>
-    far far away
+    location1
   </div>
-  <div>
-    <strong>
-      Service 
-    </strong>
-    haircut
-  </div>
-  <div>
-    <strong>
-      From 
-    </strong>
-    Sunday, December 25th 2016
-  </div>
-  <div>
-    <strong>
-      to 
-    </strong>
-    Thursday, December 29th 2016
-  </div>
+  <select
+    name="selectService">
+    <option
+      value="">
+      Select service
+    </option>
+    <option
+      value="service1">
+      service1
+    </option>
+    <option
+      value="service2">
+      service2
+    </option>
+  </select>
 </div>
 `;
 
-exports[`LocationHeader renders without dates if no date is passed 1`] = `
-<div>
-  <div>
-    <strong>
-      Location 
-    </strong>
-    far far away
-  </div>
-  <div>
-    <strong>
-      Service 
-    </strong>
-    haircut
-  </div>
-  <div>
-    <strong>
-      From 
-    </strong>
-    -
-  </div>
-  <div>
-    <strong>
-      to 
-    </strong>
-    -
-  </div>
-</div>
+exports[`LocationHeader when no location or service is selected renders location selection 1`] = `
+<select
+  name="selectLocation">
+  <option
+    value="">
+    Select location
+  </option>
+  <option
+    value="location1">
+    location1
+  </option>
+  <option
+    value="location2">
+    location2
+  </option>
+</select>
 `;

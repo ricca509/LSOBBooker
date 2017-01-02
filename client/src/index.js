@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'mobx-react';
-import PageContainer from './containers/AvailabilityPage/PageContainer';
+import Page from './containers/AvailabilityPage/Page';
 import store from './store';
 
 render(
   <Provider store={store}>
-    <PageContainer />
+    <Page />
   </Provider>,
   document.getElementById('root')
 );

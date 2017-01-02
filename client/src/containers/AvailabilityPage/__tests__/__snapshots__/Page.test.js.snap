@@ -1,3 +1,47 @@
+exports[`Page when is fetching renders the loading spinner 1`] = `
+<div
+  className="container">
+  <div
+    className="row">
+    <h3>
+      London School of Barbering availability
+    </h3>
+  </div>
+  <div
+    className="row">
+    <inject-LocationHeader-with-store
+      dates={null}
+      locationId={4}
+      onResetClick={[Function]}
+      onSelectedLocationChange={[Function]}
+      onSelectedServiceChange={[Function]}
+      serviceId={68} />
+  </div>
+  <div
+    className="row">
+    <Loading />
+  </div>
+</div>
+`;
+
+exports[`Page when there is a fetch error renders the error 1`] = `
+<div
+  className="container">
+  <div
+    className="row">
+    <h3>
+      London School of Barbering availability
+    </h3>
+  </div>
+  <div
+    className="row">
+    <div>
+      Fetch error
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Page when there is availability renders the data 1`] = `
 <div
   className="container">
@@ -9,15 +53,18 @@ exports[`Page when there is availability renders the data 1`] = `
   </div>
   <div
     className="row">
-    <LocationHeader
+    <inject-LocationHeader-with-store
       dates={
         Object {
           "end": "date",
           "start": "date",
         }
       }
-      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX"
-      service="1 Fade Cut - 1/4cm on sides" />
+      locationId={4}
+      onResetClick={[Function]}
+      onSelectedLocationChange={[Function]}
+      onSelectedServiceChange={[Function]}
+      serviceId={68} />
   </div>
   <div
     className="row">
@@ -33,29 +80,6 @@ exports[`Page when there is availability renders the data 1`] = `
           },
         ]
       } />
-  </div>
-</div>
-`;
-
-exports[`Page when there is no availability renders the loading spinner 1`] = `
-<div
-  className="container">
-  <div
-    className="row">
-    <h3>
-      London School of Barbering availability
-    </h3>
-  </div>
-  <div
-    className="row">
-    <LocationHeader
-      dates={null}
-      location="St Pauls/Farringdon - 6 West Smithfield EC1A 9JX"
-      service="1 Fade Cut - 1/4cm on sides" />
-  </div>
-  <div
-    className="row">
-    <Loading />
   </div>
 </div>
 `;
