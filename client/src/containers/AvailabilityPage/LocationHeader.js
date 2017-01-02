@@ -34,7 +34,7 @@ export const LocationHeader = ({
       ));
 
     return (
-      <select name="select" onChange={onSelectedLocationChange}>
+      <select name="selectLocation" onChange={onSelectedLocationChange}>
         <option value="">Select location</option>
         { locations }
       </select>
@@ -50,7 +50,7 @@ export const LocationHeader = ({
     return (
       <div>
         <div><strong>Location </strong>{ store.locationList[locationId] }</div>
-        <select name="select" onChange={onSelectedServiceChange}>
+        <select name="selectService" onChange={onSelectedServiceChange}>
           <option value="">Select service</option>
           { services }
         </select>
@@ -71,7 +71,8 @@ export const LocationHeader = ({
           <div>
             <a
               className="button button-small button-clear"
-              onClick={onResetClick}>
+              onClick={onResetClick}
+            >
               Change location/service
             </a>
           </div>
