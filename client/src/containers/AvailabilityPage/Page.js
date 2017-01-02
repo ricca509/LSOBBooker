@@ -75,9 +75,9 @@ export const Page = ({ store }) => (
     <div className="row">
       <h3>London School of Barbering availability</h3>
     </div>
-      { renderHeader(store) }
+    {renderHeader(store)}
     <div className="row">
-      { renderAvailability(store) }
+      {renderAvailability(store)}
     </div>
   </div>
 );
