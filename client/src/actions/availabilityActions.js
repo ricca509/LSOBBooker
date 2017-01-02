@@ -1,11 +1,11 @@
 import { runInAction, action } from 'mobx';
 import fetch from 'isomorphic-fetch';
-import store from './store';
+import store from '../stores/availabilityStore';
 import {
   FETCHING,
   FETCHED,
   FETCH_ERROR
-} from './const';
+} from '../const';
 
 export const fetchData = action(async () => {
   store.fetchStatus = FETCHING;

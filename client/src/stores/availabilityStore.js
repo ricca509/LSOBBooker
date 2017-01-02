@@ -5,7 +5,7 @@ import {
   FETCHING,
   FETCHED,
   FETCH_ERROR
-} from './const';
+} from '../const';
 
 export class Store {
   constructor() {

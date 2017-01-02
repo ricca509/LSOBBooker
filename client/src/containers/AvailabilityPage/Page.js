@@ -5,7 +5,7 @@ import { first, last } from 'lodash';
 import AvailabilityList from '../AvailabilityPage/AvailabilityList';
 import LocationHeader from '../AvailabilityPage/LocationHeader';
 import Loading from '../../components/Loading';
-import { setLocation, setService, resetLocationAndService } from '../../actions';
+import { setLocation, setService, resetLocationAndService } from '../../actions/availabilityActions';
 
 const onSelectedLocationChange = (ev) => {
   setLocation(ev.target.value);
