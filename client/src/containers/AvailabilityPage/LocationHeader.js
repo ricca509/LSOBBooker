@@ -5,13 +5,17 @@ import moment from 'moment';
 export class LocationHeader extends Component {
   getStartDate(dates) {
     return dates ?
-    (<div><strong>From </strong>{ moment(dates.start).format('dddd, MMMM Do YYYY') }</div>) :
+    (<div>
+      <strong>From </strong>{ moment(dates.start).format('dddd, MMMM Do YYYY') }
+    </div>) :
     (<div><strong>From </strong>-</div>);
   }
 
   getEndDate(dates) {
     return dates ?
-    (<div><strong>to </strong>{ moment(dates.end).format('dddd, MMMM Do YYYY') }</div>) :
+    (<div>
+      <strong>to </strong>{ moment(dates.end).format('dddd, MMMM Do YYYY') }
+    </div>) :
     (<div><strong>to </strong>-</div>);
   }
 
@@ -21,9 +25,10 @@ export class LocationHeader extends Component {
       serviceId,
       dates,
       onSelectedLocationChange,
-      onSelectedServiceChange
+      onSelectedServiceChange,
+      onResetClick,
+      store
     } = this.props;
-    const { store } = this.props;
 
     if (!locationId) {
       const locations = Object.keys(store.locationList)
@@ -58,12 +63,27 @@ export class LocationHeader extends Component {
 
     if (locationId && serviceId) {
       return (
-        <div>
-          <div><strong>Location </strong>{ store.locationList[locationId] }</div>
-          <div><strong>Service </strong>{ store.serviceList[locationId][serviceId] }</div>
-          { this.getStartDate(dates) }
-          { this.getEndDate(dates) }
-        </div>
+        <main>
+          <div>
+            <div>
+              <strong>Location </strong>{ store.locationList[locationId] }
+            </div>
+            <div>
+              <strong>Service </strong>{ store.serviceList[locationId][serviceId] }
+            </div>
+            <div>
+              <a
+                className="button button-small button-clear"
+                onClick={onResetClick}>
+                Change location/service
+              </a>
+            </div>
+          </div>
+          <div>
+            { this.getStartDate(dates) }
+            { this.getEndDate(dates) }
+          </div>
+        </main>
       );
     }
   }

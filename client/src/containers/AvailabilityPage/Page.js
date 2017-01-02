@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { first, last } from 'lodash';
 
 import AvailabilityList from '../AvailabilityPage/AvailabilityList';
 import LocationHeader from '../AvailabilityPage/LocationHeader';
 import Loading from '../../components/Loading';
-import { setLocation, setService } from '../../actions';
+import { setLocation, setService, resetLocationAndService } from '../../actions';
 
 const onSelectedLocationChange = (ev) => {
   setLocation(ev.target.value);
@@ -15,45 +15,50 @@ const onSelectedServiceChange = (ev) => {
   setService(ev.target.value);
 }
 
+const onResetClick = () => {
+  resetLocationAndService();
+}
+
 export class Page extends Component {
   getDates() {
-    const { hasAvailability, availability } = this.props;
+    const { store } = this.props;
 
-    return hasAvailability ?
+    return store.hasAvailability ?
       {
-        start: first(availability)['date'],
-        end: last(availability)['date']
+        start: first(store.availability)['date'],
+        end: last(store.availability)['date']
       } :
       null;
   }
 
   renderAvailability() {
-    const { fetching, fetched, fetchError, availability } = this.props;
+    const { store } = this.props;
 
-    if (fetching) {
+    if (store.fetching) {
       return <Loading />;
     }
 
-    if (fetched) {
-      return <AvailabilityList availability={availability} />;
+    if (store.fetched) {
+      return <AvailabilityList availability={store.availability} />;
     }
 
-    if (fetchError) {
+    if (store.fetchError) {
       return <div>Fetch error</div>;
     }
   }
 
   renderHeader() {
-    const { locationId, serviceId, fetchError } = this.props;
+    const { store } = this.props;
 
-    if (fetchError) return null;
+    if (store.fetchError) return null;
 
     return (<div className="row">
       <LocationHeader
         onSelectedLocationChange={onSelectedLocationChange}
         onSelectedServiceChange={onSelectedServiceChange}
-        locationId={locationId}
-        serviceId={serviceId}
+        onResetClick={onResetClick}
+        locationId={store.selectedLocationId}
+        serviceId={store.selectedEventId}
         dates={this.getDates()}
       />
     </div>);
@@ -76,4 +81,4 @@ export class Page extends Component {
 
 Page.displayName = 'Page';
 
-export default observer(Page);
+export default inject('store')(observer(Page));

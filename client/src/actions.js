@@ -23,6 +23,30 @@ export const fetchData = action(async () => {
   }
 });
 
-export const setLocation = action(id => store.selectedLocationId = id);
+export const setLocation = action(id => {
+  store.selectedLocationId = id;
 
-export const setService = action(id => store.selectedEventId = id);
+  if (store.selectedLocationId && store.selectedEventId) {
+    fetchData();
+  }
+});
+
+export const setService = action(id => {
+  store.selectedEventId = id
+
+  if (store.selectedLocationId && store.selectedEventId) {
+    fetchData();
+  }
+});
+
+export const resetLocationAndService = action(() => {
+  // Also need to cancel a pending AJAX req
+  Object.assign(store, {
+    selectedLocationId: null,
+    selectedEventId: null,
+    fetching: false,
+    fetched: false,
+    fetchError: false,
+    availability: []
+  });
+});

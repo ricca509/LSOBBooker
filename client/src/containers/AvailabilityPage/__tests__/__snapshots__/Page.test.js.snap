@@ -12,6 +12,7 @@ exports[`Page when is fetching renders the loading spinner 1`] = `
     <inject-LocationHeader-with-store
       dates={null}
       locationId={4}
+      onResetClick={[Function]}
       onSelectedLocationChange={[Function]}
       onSelectedServiceChange={[Function]}
       serviceId={68} />
@@ -60,6 +61,7 @@ exports[`Page when there is availability renders the data 1`] = `
         }
       }
       locationId={4}
+      onResetClick={[Function]}
       onSelectedLocationChange={[Function]}
       onSelectedServiceChange={[Function]}
       serviceId={68} />

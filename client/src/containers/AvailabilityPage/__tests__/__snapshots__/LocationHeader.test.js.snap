@@ -1,59 +1,79 @@
 exports[`LocationHeader when location and service are selected renders the selected location and service 1`] = `
-<div>
+<main>
   <div>
-    <strong>
-      Location 
-    </strong>
-    location1
+    <div>
+      <strong>
+        Location 
+      </strong>
+      location1
+    </div>
+    <div>
+      <strong>
+        Service 
+      </strong>
+      service1
+    </div>
+    <div>
+      <a
+        className="button button-small button-clear">
+        Change location/service
+      </a>
+    </div>
   </div>
   <div>
-    <strong>
-      Service 
-    </strong>
-    service1
+    <div>
+      <strong>
+        From 
+      </strong>
+      Sunday, December 25th 2016
+    </div>
+    <div>
+      <strong>
+        to 
+      </strong>
+      Thursday, December 29th 2016
+    </div>
   </div>
-  <div>
-    <strong>
-      From 
-    </strong>
-    Sunday, December 25th 2016
-  </div>
-  <div>
-    <strong>
-      to 
-    </strong>
-    Thursday, December 29th 2016
-  </div>
-</div>
+</main>
 `;
 
 exports[`LocationHeader when location and service are selected renders without dates if no date is passed 1`] = `
-<div>
+<main>
   <div>
-    <strong>
-      Location 
-    </strong>
-    location1
+    <div>
+      <strong>
+        Location 
+      </strong>
+      location1
+    </div>
+    <div>
+      <strong>
+        Service 
+      </strong>
+      service1
+    </div>
+    <div>
+      <a
+        className="button button-small button-clear">
+        Change location/service
+      </a>
+    </div>
   </div>
   <div>
-    <strong>
-      Service 
-    </strong>
-    service1
+    <div>
+      <strong>
+        From 
+      </strong>
+      -
+    </div>
+    <div>
+      <strong>
+        to 
+      </strong>
+      -
+    </div>
   </div>
-  <div>
-    <strong>
-      From 
-    </strong>
-    -
-  </div>
-  <div>
-    <strong>
-      to 
-    </strong>
-    -
-  </div>
-</div>
+</main>
 `;
 
 exports[`LocationHeader when location is selected and service is not renders selected location and service selection 1`] = `

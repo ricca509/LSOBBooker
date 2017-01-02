@@ -7,14 +7,16 @@ describe('Page', () => {
   describe('when there is availability', () => {
     it('renders the data', () => {
       const props = {
-        hasAvailability: true,
-        availability: [{
-          date: 'date',
-          times: [1, 2]
-        }],
-        fetched: true,
-        locationId: 4,
-        serviceId: 68,
+        store: {
+          hasAvailability: true,
+          availability: [{
+            date: 'date',
+            times: [1, 2]
+          }],
+          fetched: true,
+          selectedLocationId: 4,
+          selectedEventId: 68
+        }
       };
 
       const wrapper = shallow(<Page {...props} />);
@@ -26,10 +28,12 @@ describe('Page', () => {
   describe('when is fetching', () => {
     it('renders the loading spinner', () => {
       const props = {
-        availability: [],
-        fetching: true,
-        locationId: 4,
-        serviceId: 68,
+        store: {
+          availability: [],
+          fetching: true,
+          selectedLocationId: 4,
+          selectedEventId: 68
+        }
       };
 
       const wrapper = shallow(<Page {...props} />);
@@ -41,7 +45,9 @@ describe('Page', () => {
   describe('when there is a fetch error', () => {
     it('renders the error', () => {
       const props = {
-        fetchError: true
+        store: {
+          fetchError: true
+        }
       };
 
       const wrapper = shallow(<Page {...props} />);
