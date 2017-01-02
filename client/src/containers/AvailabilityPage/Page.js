@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { first, last } from 'lodash';
 
@@ -19,65 +19,68 @@ const onResetClick = () => {
   resetLocationAndService();
 }
 
-export class Page extends Component {
-  getDates() {
-    const { store } = this.props;
+const getDates = (hasAvailability, availability) => {
+  return hasAvailability ?
+    {
+      start: first(availability)['date'],
+      end: last(availability)['date']
+    } :
+    null;
+}
 
-    return store.hasAvailability ?
-      {
-        start: first(store.availability)['date'],
-        end: last(store.availability)['date']
-      } :
-      null;
+const renderAvailability = ({
+  fetching,
+  fetched,
+  fetchError,
+  availability
+}) => {
+  if (fetching) {
+    return <Loading />;
   }
 
-  renderAvailability() {
-    const { store } = this.props;
-
-    if (store.fetching) {
-      return <Loading />;
-    }
-
-    if (store.fetched) {
-      return <AvailabilityList availability={store.availability} />;
-    }
-
-    if (store.fetchError) {
-      return <div>Fetch error</div>;
-    }
+  if (fetched) {
+    return <AvailabilityList availability={availability} />;
   }
 
-  renderHeader() {
-    const { store } = this.props;
+  if (fetchError) {
+    return <div>Fetch error</div>;
+  }
+}
 
-    if (store.fetchError) return null;
+const renderHeader = ({
+  fetchError,
+  selectedLocationId,
+  selectedEventId,
+  hasAvailability,
+  availability
+}) => {
+  if (fetchError) return null;
 
-    return (<div className="row">
+  return (
+    <div className="row">
       <LocationHeader
         onSelectedLocationChange={onSelectedLocationChange}
         onSelectedServiceChange={onSelectedServiceChange}
         onResetClick={onResetClick}
-        locationId={store.selectedLocationId}
-        serviceId={store.selectedEventId}
-        dates={this.getDates()}
+        locationId={selectedLocationId}
+        serviceId={selectedEventId}
+        dates={getDates(hasAvailability, availability)}
       />
-    </div>);
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <h3>London School of Barbering availability</h3>
-        </div>
-          { this.renderHeader() }
-        <div className="row">
-          { this.renderAvailability() }
-        </div>
-      </div>
-    );
-  }
+  </div>
+  );
 }
+
+export const Page = ({ store }) => (
+  <div className="container">
+    <div className="row">
+      <h3>London School of Barbering availability</h3>
+    </div>
+      { renderHeader(store) }
+    <div className="row">
+      { renderAvailability(store) }
+    </div>
+  </div>
+);
 
 Page.displayName = 'Page';
 
