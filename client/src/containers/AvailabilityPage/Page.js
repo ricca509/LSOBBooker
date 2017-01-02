@@ -29,32 +29,32 @@ const getDates = (hasAvailability, availability) => {
 }
 
 const renderAvailability = ({
-  fetching,
-  fetched,
-  fetchError,
+  isFetching,
+  isFetched,
+  isFetchError,
   availability
 }) => {
-  if (fetching) {
+  if (isFetching) {
     return <Loading />;
   }
 
-  if (fetched) {
+  if (isFetched) {
     return <AvailabilityList availability={availability} />;
   }
 
-  if (fetchError) {
+  if (isFetchError) {
     return <div>Fetch error</div>;
   }
 }
 
 const renderHeader = ({
-  fetchError,
+  isFetchError,
   selectedLocationId,
   selectedEventId,
   hasAvailability,
   availability
 }) => {
-  if (fetchError) return null;
+  if (isFetchError) return null;
 
   return (
     <div className="row">

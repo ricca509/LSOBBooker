@@ -1,7 +1,10 @@
 import { extendObservable, computed } from 'mobx';
 import {
   LOCATIONS as locationList,
-  SERVICES as serviceList
+  SERVICES as serviceList,
+  FETCHING,
+  FETCHED,
+  FETCH_ERROR
 } from './const';
 
 export class Store {
@@ -12,10 +15,11 @@ export class Store {
       selectedEventId: null,
       locationList,
       serviceList,
-      fetching: false,
-      fetched: false,
-      fetchError: false,
+      fetchStatus: null,
       isReadyToFetch: computed(() => this.selectedLocationId && this.selectedEventId),
+      isFetching: computed(() => this.fetchStatus === FETCHING),
+      isFetched: computed(() => this.fetchStatus === FETCHED),
+      isFetchError: computed(() => this.fetchStatus === FETCH_ERROR),
       hasAvailability: computed(() => this.availability.length && !this.fetching)
     });
   }

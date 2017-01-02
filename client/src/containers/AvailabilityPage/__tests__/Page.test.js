@@ -13,7 +13,7 @@ describe('Page', () => {
             date: 'date',
             times: [1, 2]
           }],
-          fetched: true,
+          isFetched: true,
           selectedLocationId: 4,
           selectedEventId: 68
         }
@@ -30,7 +30,7 @@ describe('Page', () => {
       const props = {
         store: {
           availability: [],
-          fetching: true,
+          isFetching: true,
           selectedLocationId: 4,
           selectedEventId: 68
         }
@@ -46,7 +46,7 @@ describe('Page', () => {
     it('renders the error', () => {
       const props = {
         store: {
-          fetchError: true
+          isFetchError: true
         }
       };
 

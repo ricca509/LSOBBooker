@@ -1,9 +1,14 @@
 import { runInAction, action } from 'mobx';
 import fetch from 'isomorphic-fetch';
 import store from './store';
+import {
+  FETCHING,
+  FETCHED,
+  FETCH_ERROR
+} from './const';
 
 export const fetchData = action(async () => {
-  store.fetching = true;
+  store.fetchStatus = FETCHING;
 
   try {
     const res = await fetch('/api/availability');
@@ -11,14 +16,12 @@ export const fetchData = action(async () => {
 
     runInAction('availability fetch success', () => {
       store.availability = json;
-      store.fetching = false;
-      store.fetched = true;
+      store.fetchStatus = FETCHED;
     });
   } catch (e) {
     runInAction('availability fetch error', () => {
-      console.log(e);
-      store.fetchError = e;
-      store.fetching = false;
+      console.error(e);
+      store.fetchStatus = FETCH_ERROR;
     })
   }
 });
@@ -44,9 +47,7 @@ export const resetLocationAndService = action(() => {
   Object.assign(store, {
     selectedLocationId: null,
     selectedEventId: null,
-    fetching: false,
-    fetched: false,
-    fetchError: false,
+    fetchStatus: null,
     availability: []
   });
 });
