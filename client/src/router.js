@@ -1,3 +1,4 @@
+// Thanks to https://github.com/mweststrate/state-routing-blog-sources/blob/master/src/store/router.js
 import { autorun } from 'mobx';
 import { Router } from 'director';
 import {
@@ -16,17 +17,18 @@ const buildPath = (pathArray) => {
 export const startRouter = (store) => {
   // update state on url change
   const router = new Router({
-    "/:locationId": (locationId) => {
-      resetLocationAndService();
-      setLocation(locationId);
-    },
-    "/:locationId/:serviceId": (locationId, serviceId) => {
+    '/:locationId/:serviceId': (locationId, serviceId) => {
       resetLocationAndService();
       setLocation(locationId);
       setService(serviceId);
-    }
+    },
+    '/:locationId': (locationId) => {
+      resetLocationAndService();
+      setLocation(locationId);
+    },
+    '/': () => resetLocationAndService()
   }).configure({
-    //notfound: () => store.showOverview(),
+    notfound: () => console.error('404'),
     html5history: true
   }).init();
 
