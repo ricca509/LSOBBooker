@@ -26,22 +26,6 @@ export const fetchData = action(async () => {
   }
 });
 
-export const setLocation = action(id => {
-  store.selectedLocationId = id;
-
-  if (store.selectedLocationId && store.selectedEventId) {
-    fetchData();
-  }
-});
-
-export const setService = action(id => {
-  store.selectedEventId = id
-
-  if (store.selectedLocationId && store.selectedEventId) {
-    fetchData();
-  }
-});
-
 export const resetLocationAndService = action(() => {
   // Also need to cancel a pending AJAX req
   Object.assign(store, {
@@ -50,4 +34,20 @@ export const resetLocationAndService = action(() => {
     fetchStatus: null,
     availability: []
   });
+});
+
+export const setLocation = action(id => {
+  store.selectedLocationId = id;
+
+  if (store.isReadyToFetch) {
+    fetchData();
+  }
+});
+
+export const setService = action(id => {
+  store.selectedEventId = id
+
+  if (store.isReadyToFetch) {
+    fetchData();
+  }
 });
