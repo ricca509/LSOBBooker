@@ -11,7 +11,7 @@ export const fetchData = action(async () => {
   store.fetchStatus = FETCHING;
 
   try {
-    const res = await fetch('/api/availability');
+    const res = await fetch(`/api/availability/${store.selectedEventId}`);
     const json = await res.json();
 
     runInAction('availability fetch success', () => {
