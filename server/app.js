@@ -1,5 +1,5 @@
-import { getAvailability } from './lsobDataFetcher.js';
 import express from 'express';
+import availabilityHandler from './handlers/availability';
 
 const app = express();
 
@@ -10,11 +10,8 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-app.get('/api/availability', async (req, res) => {
-  const availability = await getAvailability();
-  res.json(availability);
-});
+app.get('/api/availability/:eventId', availabilityHandler);
 
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`)
 });
